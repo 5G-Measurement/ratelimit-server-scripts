@@ -1,0 +1,10 @@
+## iperf command
+    iperf3 -s -p 5201 -V
+
+## faketcp command
+
+    # check public interface
+    ifconfig
+
+    # command
+    sudo ./faketcp -s -l [ip]:[port] --fix-gro --pkt-len 1420 -a --raw-mode faketcp/udp
