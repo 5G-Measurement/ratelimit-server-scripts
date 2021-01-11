@@ -2,9 +2,15 @@
     iperf3 -s -p 5201 -V
 
 ## faketcp command
+    cd rawtcp-udp
 
     # check public interface
     ifconfig
 
-    # command
+    # server command
     sudo ./faketcp -s -l [ip]:[port] --fix-gro --pkt-len 1420 -a --raw-mode faketcp/udp
+
+    # client command
+    cd /data/local/tmp # if not already in that directory
+    sudo ./faketcp_arm -c -r [ip]:[port] --fix-gro --pkt-len 10 -a --raw-mode faketcp/udp
+

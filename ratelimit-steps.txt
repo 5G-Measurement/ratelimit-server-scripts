@@ -5,17 +5,10 @@ Steps:
 2- SSH to the machine
 
 3- Run screen command
+https://github.com/5G-Measurement/ratelimit-server-scripts.git
 
-4- To run the python script:
-python run-iperf3.py of if you wish to run with changed congestion control python run-iperf-server.py (fileName + _CONGESTIONCONTROL, must have CC as last element of filename, seperated with _)
+4- Git clone
 
-5- To check the size of the created files: bash check.sh6- 
-To kill any process: kill -9 proccess_id
-
-6- To copy the files from the server to the local directory:
-scp -r arvind@40.122.79.110:/home/arvind/iperf3/ .
-scp -r arvind@52.173.241.206:/home/arvind/iperf3/ .
-
-7- Upload the json files in the experiments directory for this day.
+5- Do a complete set of tests
 
 8- Go to Azure portal again: stop both virtual machines
