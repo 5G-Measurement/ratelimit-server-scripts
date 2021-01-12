@@ -10,6 +10,9 @@ sudo yum install -y epel-release
 sudo yum install -y gcc
 sudo yum install -y screen
 sudo yum install -y gcc-c++
+sudo yum install -y make
+sudo yum install -y python
+sudo yum install -y libtool
 
 # install iperf3.9
 mkdir scratch

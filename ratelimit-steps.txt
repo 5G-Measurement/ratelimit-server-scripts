@@ -8,7 +8,7 @@ Steps:
     sudo yum install -y git
 
 4- Setup everything
-    https://github.com/5G-Measurement/ratelimit-server-scripts.git
+    git clone https://github.com/5G-Measurement/ratelimit-server-scripts.git
     cd ratelimit-server-scripts
     sudo bash ratelimit-server-setup.sh
 
