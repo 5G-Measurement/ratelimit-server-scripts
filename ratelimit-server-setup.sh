@@ -29,5 +29,4 @@ cd ~
 sudo sysctl -w net.ipv4.tcp_congestion_control=cubic
 
 # get faketcp binary
-cd ratelimit-server-scripts
 git clone https://github.com/ahmadhassan997/rawtcp-udp.git
