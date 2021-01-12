@@ -16,7 +16,6 @@ Steps:
 5- Do a complete set of tests using run commands
 
 6- Copy logs from server
-    scp -r arvind@[]:/home/arvind/iperf3/ .
-    scp -r arvind@[]:/home/arvind/iperf3/ .
+    scp -r arvind@[IP]:/home/arvind/ratelimit-server-scripts/iperf3logs/ .
 
 7- Go to Azure portal again: stop both virtual machines

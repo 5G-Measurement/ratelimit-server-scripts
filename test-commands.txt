@@ -1,5 +1,5 @@
 ## iperf command
-    chmod u+x short-run-iperf-server.sh
+    chmod u+x run-iperf-server.sh
     ./run-iperf-server.sh [ port number ] # 5201 by default
 
 ## faketcp command
@@ -11,10 +11,12 @@
     # server command
     cd .. # if not already in rawtcp-udp directory
     sudo ./faketcp -s -l [ip]:[port] --fix-gro --pkt-len 1420 -a --raw-mode faketcp/udp
+    type ctrl+c to terminate
 
     # client command
     cd /data/local/tmp # if not already in that directory
     sudo ./faketcp_arm -c -r [ip]:[port] --fix-gro --pkt-len 10 -a --raw-mode faketcp/udp
+    type ctrl+c to terminate
 
 ## Things to remember
 -- Make sure no processes are running after you complete a test
