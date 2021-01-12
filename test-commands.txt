@@ -9,6 +9,7 @@
     ifconfig
 
     # server command
+    cd .. # if not already in rawtcp-udp directory
     sudo ./faketcp -s -l [ip]:[port] --fix-gro --pkt-len 1420 -a --raw-mode faketcp/udp
 
     # client command
