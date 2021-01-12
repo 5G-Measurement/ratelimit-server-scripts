@@ -7,10 +7,14 @@ Steps:
 3- Install git
     sudo yum install -y git
 
-4- Setup everything
+4- Setup everything for iperf3.9
     git clone https://github.com/5G-Measurement/ratelimit-server-scripts.git
     cd ratelimit-server-scripts
     sudo bash ratelimit-server-setup.sh
+
+5- Setup everything for faketcp
+    cd ..
+    git clone https://github.com/ahmadhassan997/rawtcp-udp.git
 
 
 5- Do a complete set of tests using run commands
