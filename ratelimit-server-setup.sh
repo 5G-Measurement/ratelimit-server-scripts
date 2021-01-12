@@ -6,14 +6,10 @@
 sudo timedatectl set-timezone America/Chicago
 
 # install dependencies for experiments
-sudo yum install -y nano
+sudo yum install -y epel-release
 sudo yum install -y gcc
-sudo yum install -y python
 sudo yum install -y screen
-sudo yum install -y git
-sudo yum install -y libtool
-sudo yum install -y make
-sudo rum install -y gcc-c++
+sudo yum install -y gcc-c++
 
 # install iperf3.9
 mkdir scratch
@@ -31,4 +27,5 @@ cd ~
 sudo sysctl -w net.ipv4.tcp_congestion_control=cubic
 
 # get faketcp binary
+cd ratelimit-server-scripts
 git clone https://github.com/ahmadhassan997/rawtcp-udp.git

@@ -4,11 +4,19 @@ Steps:
 
 2- SSH to the machine
 
-3- Run screen command
-https://github.com/5G-Measurement/ratelimit-server-scripts.git
+3- Install git
+    sudo yum install -y git
 
-4- Git clone
+4- Setup everything
+    https://github.com/5G-Measurement/ratelimit-server-scripts.git
+    cd ratelimit-server-scripts
+    sudo bash ratelimit-server-setup.sh
 
-5- Do a complete set of tests
 
-8- Go to Azure portal again: stop both virtual machines
+5- Do a complete set of tests using run commands
+
+6- Copy logs from server
+    scp -r arvind@[]:/home/arvind/iperf3/ .
+    scp -r arvind@[]:/home/arvind/iperf3/ .
+
+7- Go to Azure portal again: stop both virtual machines

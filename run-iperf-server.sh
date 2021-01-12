@@ -3,6 +3,7 @@
 #author: Rostand
 #date: December 21, 2019
 #
+#modified: January 11, 2021
 #NOTE: If NOT in a screen session, this script will start a screen session and run this code in that screen
 #
 #Description:
@@ -36,18 +37,22 @@ fi
 # Function to lookup hostname.
 getHostname()
 {
-	if [ "$HOSTNAME" = labtest-OptiPlex-780 ]; then
-		host='Labtest'
-	elif [ "$HOSTNAME" = cse-5g-dev-web.oit.umn.edu ]; then
-		host='umn1'	
-	elif [ "$HOSTNAME" = cse-nflambda-prd-web-01.oit.umn.edu ]; then
-		host='umn2'
-	elif [ "$HOSTNAME" = east1-1 ]; then
-		host='az1'
-	elif [ "$HOSTNAME" = nc-1 ]; then
-		host='az2'
-    elif [ "$HOSTNAME" = ratelimit-azure-east]
+    if [ "$HOSTNAME" = ratelimit-azure-east]; then
 		host="AZEast"
+	elif [ "$HOSTNAME" = ratelimit-azure-east2]; then
+		host="AZEast2"
+	elif [ "$HOSTNAME" = ratelimit-azure-southcentral]; then
+		host="AZSouthCentral"
+	elif [ "$HOSTNAME" = ratelimit-azure-west2]; then
+		host="AZWest2"
+	elif [ "$HOSTNAME" = ratelimit-azure-central]; then
+		host="AZCentral"
+	elif [ "$HOSTNAME" = ratelimit-azure-northcentral]; then
+		host="AZNorthCentral"
+	elif [ "$HOSTNAME" = ratelimit-azure-west]; then
+		host="AZWest"
+	elif [ "$HOSTNAME" = ratelimit-azure-westcentral]; then
+		host="AZWestCentral"
 	fi
 }
 
@@ -73,7 +78,7 @@ killPort()
 # Function to check if iperf3/ folder exist and create it if not
 outputFolder()
 {
-	dir='iperf3/'
+	dir='iperf3logs/'
 	if [[ ! -e $dir ]]; then
 		mkdir $dir
 		echo "Directory created: $dir"
@@ -92,7 +97,7 @@ isIperfInstall()
 }
 
 
-#echo port number is "$port"
+# echo port number is "$port"
 # Function to prepare output file and folder
 outputFile()
 {
@@ -149,7 +154,7 @@ if [ "$1" ]; then
 			
 			# Running iperf normally
 			echo "Running iperf3 on $1"	
-      			echo 'UMNNetLab123!@#' | sudo -S /usr/local/bin/iperf3 -s -p "$1" -i 1 -J --logfile "$outFileName" 2> /dev/null
+      			sudo /usr/local/bin/iperf3 -s -p "$1" -i 1 -J --logfile "$outFileName" 2> /dev/null
       			wait
 		elif [ "$input" = n ] || [ "$input" = N ]; then
 			echo "exiting..."	
@@ -159,7 +164,7 @@ if [ "$1" ]; then
 	elif [ "$running" = no ]; then
 		# Running iperf normally on specified port number
 		echo "Running iperf3 on $1"	
-    		echo 'UMNNetLab123!@#' | sudo -S /usr/local/bin/iperf3 -s -p "$1" -i 1 -J --logfile "$outFileName" 2> /dev/null
+    		sudo /usr/local/bin/iperf3 -s -p "$1" -i 1 -J --logfile "$outFileName" 2> /dev/null
     		wait
 	fi
 else
@@ -168,7 +173,7 @@ else
 	isPortOpen 5201
 	if [ "$running" = no ]; then
 		echo "Running iperf3 on default port 5201"
-    		echo 'UMNNetLab123!@#' | sudo -S /usr/local/bin/iperf3 -s -i 1 -J --logfile "$outFileName" 2> /dev/null
+    		sudo /usr/local/bin/iperf3 -s -i 1 -J --logfile "$outFileName" 2> /dev/null
     		wait
 	elif [ "$running" = yes ]; then
 		
@@ -189,7 +194,7 @@ else
 			
 			# Running iperf normally
 			echo "Running iperf3 on default port number 5201"	
-      			echo 'UMNNetLab123!@#' | sudo -S /usr/local/bin/iperf3 -s -p 5201 -i 1 -J --logfile "$outFileName" 2> /dev/null
+      			sudo /usr/local/bin/iperf3 -s -p 5201 -i 1 -J --logfile "$outFileName" 2> /dev/null
       			wait
 		elif [ "$input" = n ] || [ "$input" = N ]; then
 			echo "exiting..."	
