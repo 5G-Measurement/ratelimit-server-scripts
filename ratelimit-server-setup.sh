@@ -66,4 +66,4 @@ sudo chmod u+x faketcp-server.sh
 ./ndt-server.sh &
 
 # run iperf server
-./run-short.server.sh
+./run-short-server.sh
