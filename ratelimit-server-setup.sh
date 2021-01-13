@@ -58,7 +58,8 @@ sudo sysctl -w net.ipv4.udp_wmem_min=16384
 
 # give permissions to execute
 cd ratelimit-server-scripts
-sudo chmod u+x iperf-server.sh
+sudo chmod u+x iperf-short-server.sh
+sudo chmod u+x iperf-long-server.sh
 sudo chmod u+x ndt-server.sh
 sudo chmod u+x faketcp-server.sh
 
