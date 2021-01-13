@@ -9,19 +9,22 @@ Steps:
 4- Install git
     sudo yum install -y git
 
-5- Setup everything for iperf3.9
+5- Setup for iperf3.9
     git clone https://github.com/5G-Measurement/ratelimit-server-scripts.git
     cd ratelimit-server-scripts
     sudo bash ratelimit-server-setup.sh
 
-6- Setup everything for faketcp
+6- Setup for ndt7-server
+    sudo bash setup-ndt-server.sh
+
+7- Setup for faketcp
     cd ..
     git clone https://github.com/ahmadhassan997/rawtcp-udp.git
 
 
-7- Do a complete set of tests using run commands
+8- Do a complete set of tests using run commands
 
-8- Copy logs from server
+9- Copy logs from server
     scp -r arvind@[IP]:/home/arvind/ratelimit-server-scripts/iperf3logs/ .
 
-9- Go to Azure portal again: delete the virtual machine
+10- Go to Azure portal again: delete the virtual machine

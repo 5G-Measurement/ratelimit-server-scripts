@@ -17,6 +17,15 @@
     sudo ./faketcp_arm -c -r [ip]:5201 --fix-gro --pkt-len 10 -a --raw-mode faketcp
     -- type ctrl+c to terminate
 
+## ndt commands
+    
+    # server command
+    cd ndt-server
+    sudo bash run-ndt-server.sh
+
+    # client command
+    http://[IP]/ndt7.html
+
 ## Things to remember
     # Make sure no processes are running after you complete a test
 
