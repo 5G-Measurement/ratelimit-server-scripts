@@ -19,9 +19,6 @@ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/dock
 sudo yum install -y docker-ce docker-ce-cli containerd.io
 sudo systemctl start docker
 
-# clone raw tcp
-git clone https://github.com/ahmadhassan997/rawtcp-udp.git
-
 # install iperf3.9
 mkdir scratch
 cd scratch/
@@ -32,7 +29,7 @@ sudo ./bootstrap.sh
 sudo ./configure 
 sudo make
 sudo make install
-cd ~/ratelimit-server-scripts
+cd ~
 
 ## Setup ndt-7 server
 git clone https://github.com/m-lab/ndt-server.git
@@ -40,6 +37,10 @@ cd ndt-server
 install -d certs datadir
 ./gen_local_test_certs.bash
 sudo docker build . -t ndt-server
+cd ~
+
+# clone raw tcp
+git clone https://github.com/ahmadhassan997/rawtcp-udp.git
 
 ## Load tcp bbr kernel module
 sudo modprobe tcp_bbr
@@ -60,6 +61,7 @@ sudo sysctl -w net.ipv4.udp_rmem_min=16384
 sudo sysctl -w net.ipv4.udp_wmem_min=16384
 
 # give permissions to execute
+cd ~/ratelimit-server-scripts
 sudo chmod u+x iperf-server.sh
 sudo chmod u+x ndt-server.sh
 sudo chmod u+x faketcp-server.sh
