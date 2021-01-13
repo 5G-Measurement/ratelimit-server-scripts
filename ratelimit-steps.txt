@@ -11,7 +11,43 @@ Steps:
 
 5- Do a complete set of tests using run commands
 
-6- Copy logs from server
-    scp -r arvind@[IP]:/home/arvind/ratelimit-server-scripts/iperf3logs/ .
+    ## iperf3.9 commands
+        ./run-iperf-server.sh [ port number ] # 5201 by default
 
-7- Go to Azure portal again: delete the virtual machine
+    ## faketcp commands
+        cd rawtcp-udp
+
+        # server command
+        sudo ./faketcp-server.sh
+        -- type ctrl+c to terminate
+
+        # client command
+        cd /data/local/tmp # if not already in that directory
+        sudo ./faketcp-client.sh [SERVERNAME]
+        -- type ctrl+c to terminate
+
+    ## ndt commands
+        
+        # server command
+        cd ndt-server
+        sudo bash run-ndt-server.sh
+
+        # client ip address
+        http://[IP]/ndt7.html
+
+6- Go to Azure portal again: delete the virtual machine
+
+## Things to remember
+    # Make sure no processes are running after you complete a test
+
+    -- To check ports that are listening for connections
+        sudo lsof -i -P -n | grep LISTEN
+
+    -- To kill a running process
+        kill -9 [PID] # to kill the running process
+
+    -- To check the detached screens sessions
+        screen -ls
+
+    -- To attach to a detached screen
+        screen -r [screen-name]
