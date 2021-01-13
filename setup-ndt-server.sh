@@ -12,11 +12,11 @@
 ## Install docker [centOS]
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-sudo yum install docker-ce docker-ce-cli containerd.io
+sudo yum install -y docker-ce docker-ce-cli containerd.io
 
 ## Setup ndt-7 server
 cd
-https://github.com/m-lab/ndt-server.git
+git clone https://github.com/m-lab/ndt-server.git
 cd ndt-server
 install -d certs datadir
 ./gen_local_test_certs.bash

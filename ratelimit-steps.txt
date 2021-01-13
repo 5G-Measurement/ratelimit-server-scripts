@@ -2,7 +2,7 @@ Steps:
 
 1- Go to Azure portal: Make virtual machine
 
-2- In networking, add firewall rule for 5201
+2- In networking, add firewall rule for 5201 and modify for 443
 
 3- SSH to the machine
 
