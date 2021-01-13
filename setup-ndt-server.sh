@@ -15,7 +15,6 @@ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/dock
 sudo yum install -y docker-ce docker-ce-cli containerd.io
 
 ## Setup ndt-7 server
-cd
 git clone https://github.com/m-lab/ndt-server.git
 cd ndt-server
 install -d certs datadir
