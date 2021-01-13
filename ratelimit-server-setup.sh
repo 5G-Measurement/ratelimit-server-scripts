@@ -13,6 +13,15 @@ sudo yum install -y gcc-c++
 sudo yum install -y make
 sudo yum install -y libtool
 
+## Install docker and start it
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install -y docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker
+
+# clone raw tcp
+git clone https://github.com/ahmadhassan997/rawtcp-udp.git
+
 # install iperf3.9
 mkdir scratch
 cd scratch/
@@ -23,7 +32,17 @@ sudo ./bootstrap.sh
 sudo ./configure 
 sudo make
 sudo make install
-cd ~
+cd ~/ratelimit-server-scripts
+
+## Setup ndt-7 server
+git clone https://github.com/m-lab/ndt-server.git
+cd ndt-server
+install -d certs datadir
+./gen_local_test_certs.bash
+sudo docker build . -t ndt-server
+
+## Load tcp bbr kernel module
+sudo modprobe tcp_bbr
 
 # set congestion control algorithm to cubic (for sanity)
 sudo sysctl -w net.ipv4.tcp_congestion_control=cubic
@@ -39,3 +58,8 @@ sudo sysctl -w net.ipv4.tcp_mem='786432 1048576 26777216'
 sudo sysctl -w net.ipv4.udp_mem='65536 131072 262144'
 sudo sysctl -w net.ipv4.udp_rmem_min=16384
 sudo sysctl -w net.ipv4.udp_wmem_min=16384
+
+# give permissions to execute
+chmod u+x iperf-server.sh
+chmod u+x ndt-server.sh
+chmod u+x faketcp-server.sh

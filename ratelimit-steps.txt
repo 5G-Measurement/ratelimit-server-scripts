@@ -10,9 +10,7 @@ Steps:
     sudo yum install -y git
 
 5- Setup for iperf3.9
-    git clone https://github.com/5G-Measurement/ratelimit-server-scripts.git
-    cd ratelimit-server-scripts
-    sudo bash ratelimit-server-setup.sh
+    git clone https://github.com/5G-Measurement/ratelimit-server-scripts.git && cd ratelimit-server-scripts && sudo bash ratelimit-server-setup.sh
 
 6- Setup for ndt7-server
     sudo bash setup-ndt-server.sh
