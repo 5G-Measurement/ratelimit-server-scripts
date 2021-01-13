@@ -18,7 +18,7 @@ Steps:
         cd rawtcp-udp
 
         # server command
-        sudo ./faketcp-server.sh
+        ./faketcp-server.sh
         -- type ctrl+c to terminate
 
         # client command
