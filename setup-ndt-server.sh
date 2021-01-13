@@ -15,11 +15,13 @@ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/dock
 sudo yum install docker-ce docker-ce-cli containerd.io
 
 ## Setup ndt-7 server
+cd
 https://github.com/m-lab/ndt-server.git
 cd ndt-server
 install -d certs datadir
 ./gen_local_test_certs.bash
 sudo docker build . -t ndt-server
+sudo systemctl start docker
 
 ## Load tcp bbr kernel module
 sudo modprobe tcp_bbr
