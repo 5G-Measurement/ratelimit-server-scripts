@@ -1,24 +1,33 @@
-## iperf command
+## iperf3.9 commands
     chmod u+x run-iperf-server.sh
     ./run-iperf-server.sh [ port number ] # 5201 by default
 
-## faketcp command
+## faketcp commands
     cd rawtcp-udp
 
     # check public interface
     ifconfig
 
     # server command
-    cd .. # if not already in rawtcp-udp directory
-    sudo ./faketcp -s -l [ip]:[port] --fix-gro --pkt-len 1420 -a --raw-mode faketcp/udp
-    type ctrl+c to terminate
+    sudo ./faketcp -s -l [ip]:5201 --fix-gro --pkt-len 1420 -a --raw-mode faketcp
+    -- type ctrl+c to terminate
 
     # client command
     cd /data/local/tmp # if not already in that directory
-    sudo ./faketcp_arm -c -r [ip]:[port] --fix-gro --pkt-len 10 -a --raw-mode faketcp/udp
-    type ctrl+c to terminate
+    sudo ./faketcp_arm -c -r [ip]:5201 --fix-gro --pkt-len 10 -a --raw-mode faketcp
+    -- type ctrl+c to terminate
 
 ## Things to remember
--- Make sure no processes are running after you complete a test
-    sudo lsof -i -P -n | grep LISTEN # to check ports listening
-    kill -9 [PID] # to kill the running process
+    # Make sure no processes are running after you complete a test
+
+    -- To check ports that are listening for connections
+        sudo lsof -i -P -n | grep LISTEN
+
+    -- To kill a running process
+        kill -9 [PID] # to kill the running process
+
+    -- To check the detached screens sessions
+        screen -ls
+
+    -- To attach to a detached screen
+        screen -r [screen-name]
