@@ -20,6 +20,7 @@
 1. ### iperf3.9 commands
     ```bash
     ./run-iperf-server.sh [ port number ] # 5201 by default
+    screen -S iperf -d -m ./iperf-long-server.sh # to run long iperf
     ```
 
 2. ### faketcp commands (type ctrl+c to terminate)

@@ -28,34 +28,6 @@
 #	1. chmod u+x {}
 #	2. ./{}
 
-
-# Check if screen is running, if not, run this script inside a screen
-if [ -z "$STY" ]; then
-  exec screen -S iperf /bin/bash "$0" "$1"
-fi
-
-# Function to lookup hostname.
-getHostname()
-{
-    if [ "$HOSTNAME" = ratelimit-azure-east ]; then
-		host='AZEast'
-	elif [ "$HOSTNAME" = ratelimit-azure-east2 ]; then
-		host='AZEast2'
-	elif [ "$HOSTNAME" = ratelimit-azure-southcentral ]; then
-		host='AZSouthCentral'
-	elif [ "$HOSTNAME" = ratelimit-azure-west2 ]; then
-		host='AZWest2'
-	elif [ "$HOSTNAME" = ratelimit-azure-central ]; then
-		host='AZCentral'
-	elif [ "$HOSTNAME" = ratelimit-azure-northcentral ]; then
-		host='AZNorthCentral'
-	elif [ "$HOSTNAME" = ratelimit-azure-west ]; then
-		host='AZWest'
-	elif [ "$HOSTNAME" = ratelimit-azure-westcentral ]; then
-		host='AZWestCentral'
-	fi
-}
-
 # Function to check if port is open
 isPortOpen()
 {

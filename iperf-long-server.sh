@@ -28,12 +28,6 @@
 #	1. chmod u+x {}
 #	2. ./{}
 
-
-# Check if screen is running, if not, run this script inside a screen
-if [ -z "$STY" ]; then
-  exec screen -S iperf /bin/bash "$0" "$1"
-fi
-
 # Function to check if port is open
 isPortOpen()
 {
