@@ -8,6 +8,17 @@ fi
 # Get hostname of machine
 host="$HOSTNAME"
 
+# Function to check if iperf3/ folder exist and create it if not
+outputFolder()
+{
+	dir='ndtlogs/'
+	if [[ ! -e $dir ]]; then
+		mkdir $dir
+		echo "Directory created: $dir"
+	fi
+}
+outputFolder
+
 # Function to prepare output file and folder
 outputFile()
 {
