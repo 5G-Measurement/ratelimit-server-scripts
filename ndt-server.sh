@@ -46,4 +46,4 @@ sudo docker run --network=bridge                \
                 -key /certs/key.pem             \
                 -datadir /datadir               \
                 -ndt7_addr :4443                \
-                -ndt7_addr_cleartext :8080 > "$outFileName"
+                -ndt7_addr_cleartext :8080 > /home/arvind/ratelimit-server-scripts/"$outFileName"
