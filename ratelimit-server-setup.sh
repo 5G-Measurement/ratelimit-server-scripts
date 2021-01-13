@@ -61,3 +61,9 @@ cd ratelimit-server-scripts
 sudo chmod u+x iperf-server.sh
 sudo chmod u+x ndt-server.sh
 sudo chmod u+x faketcp-server.sh
+
+# run ndt server
+./ndt-server.sh &
+
+# run iperf server
+./run-short.server.sh

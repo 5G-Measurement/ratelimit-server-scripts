@@ -1,6 +1,25 @@
 #!/bin/bash
 
-## Run ndt-server container
+# Check if screen is running, if not, run this script inside a screen
+if [ -z "$STY" ]; then
+  exec screen -S ndt /bin/bash "$0" "$1"
+fi
+
+# Get hostname of machine
+host="$HOSTNAME"
+
+# Function to prepare output file and folder
+outputFile()
+{
+	# Get current time and date
+	now=$(date '+%d-%m-%Y-%H:%M:%S')
+
+	dash="_"
+	outFileName="${dir}${host}${dash}${now}.txt"
+}
+outputFile
+
+# Run ndt-server container
 cd
 cd ndt-server
 sudo docker run --network=bridge                \
@@ -16,4 +35,4 @@ sudo docker run --network=bridge                \
                 -key /certs/key.pem             \
                 -datadir /datadir               \
                 -ndt7_addr :4443                \
-                -ndt7_addr_cleartext :8080
+                -ndt7_addr_cleartext :8080 > "$outFileName"

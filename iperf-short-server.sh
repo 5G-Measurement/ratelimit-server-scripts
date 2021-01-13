@@ -31,7 +31,7 @@
 
 # Check if screen is running, if not, run this script inside a screen
 if [ -z "$STY" ]; then
-  exec screen /bin/bash "$0" "$1"
+  exec screen -S iperf /bin/bash "$0" "$1"
 fi
 
 # Function to lookup hostname.
@@ -115,7 +115,7 @@ outputFile()
 isIperfInstall
 
 # Get hostname of machine
-getHostname
+host="$HOSTNAME"
 
 # Prepare outputFile/Folder
 outputFile
