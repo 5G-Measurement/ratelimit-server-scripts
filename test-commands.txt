@@ -1,20 +1,16 @@
 ## iperf3.9 commands
-    chmod u+x run-iperf-server.sh
     ./run-iperf-server.sh [ port number ] # 5201 by default
 
 ## faketcp commands
     cd rawtcp-udp
 
-    # check public interface
-    ifconfig
-
     # server command
-    sudo ./faketcp -s -l [ip]:5201 --fix-gro --pkt-len 1420 -a --raw-mode faketcp
+    sudo ./faketcp-server.sh
     -- type ctrl+c to terminate
 
     # client command
     cd /data/local/tmp # if not already in that directory
-    sudo ./faketcp_arm -c -r [ip]:5201 --fix-gro --pkt-len 10 -a --raw-mode faketcp
+    sudo ./faketcp-client.sh [SERVERNAME]
     -- type ctrl+c to terminate
 
 ## ndt commands
@@ -23,7 +19,7 @@
     cd ndt-server
     sudo bash run-ndt-server.sh
 
-    # client command
+    # client ip address
     http://[IP]/ndt7.html
 
 ## Things to remember

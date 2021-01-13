@@ -60,6 +60,6 @@ sudo sysctl -w net.ipv4.udp_rmem_min=16384
 sudo sysctl -w net.ipv4.udp_wmem_min=16384
 
 # give permissions to execute
-chmod u+x iperf-server.sh
-chmod u+x ndt-server.sh
-chmod u+x faketcp-server.sh
+sudo chmod u+x iperf-server.sh
+sudo chmod u+x ndt-server.sh
+sudo chmod u+x faketcp-server.sh
