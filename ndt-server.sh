@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Check if screen is running, if not, run this script inside a screen
-if [ -z "$STY" ]; then
-  exec screen -S ndt /bin/bash "$0"
-fi
+# if [ -z "$STY" ]; then
+#   exec screen -S ndt /bin/bash "$0"
+# fi
 
 # Get hostname of machine
 host="$HOSTNAME"
