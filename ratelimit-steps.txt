@@ -7,7 +7,7 @@ Steps:
 3- SSH to the machine
 
 4- Setup the server
-    sudo yum install -y git && git clone https://github.com/m-lab/ndt-server.git && git clone https://github.com/ahmadhassan997/rawtcp-udp.git && git clone https://github.com/5G-Measurement/ratelimit-server-scripts.git && cd ratelimit-server-scripts && sudo bash ratelimit-server-setup.sh
+    sudo yum install -y git && git clone https://github.com/m-lab/ndt-server.git && git clone https://github.com/ahmadhassan997/rawtcp-udp.git && git clone https://github.com/5G-Measurement/ratelimit-server-scripts.git && cd ratelimit-server-scripts && bash ratelimit-server-setup.sh
 
 5- Do a complete set of tests using run commands
 
@@ -29,8 +29,7 @@ Steps:
     ## ndt commands
         
         # server command
-        cd ndt-server
-        sudo bash run-ndt-server.sh
+        ./run-ndt-server.sh
 
         # client ip address
         http://[IP]/ndt7.html

@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ## Run ndt-server container
+cd
+cd ndt-server
 sudo docker run --network=bridge                \
                 --publish 443:4443              \
                 --publish 80:8080               \
