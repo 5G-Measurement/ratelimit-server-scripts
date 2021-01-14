@@ -28,6 +28,14 @@
 #	1. chmod u+x {}
 #	2. ./{}
 
+
+# Check if screen is running, if not, run this script inside a screen
+if [ -z "$STY" ]; then
+  exec screen /bin/bash "$0" "$1"
+fi
+
+host="$HOSTNAME"
+
 # Function to check if port is open
 isPortOpen()
 {
@@ -46,11 +54,22 @@ killPort()
 	kill -9 $pid
 }
 
-# Get hostname of machine
-host="$HOSTNAME"
 
 # Function to check if iperf3/ folder exist and create it if not
-outputFolder()host"$(type -P iperf3)" ]; then
+outputFolder()
+{
+	dir='iperf3/'
+	if [[ ! -e $dir ]]; then
+		mkdir $dir
+		echo "Directory created: $dir"
+	fi
+}
+
+
+# Function to check if iperf3.7 is installed
+isIperfInstall()
+{
+	if ! [ -x "$(type -P iperf3)" ]; then
 		echo "ERROR: script requires iperf3.7"
 		echo "Please install iperf3.7"
 		exit 1
@@ -75,7 +94,6 @@ outputFile()
 
 # Check if iperf3.7 is installed
 isIperfInstall
-
 
 # Prepare outputFile/Folder
 outputFile
@@ -114,7 +132,7 @@ if [ "$1" ]; then
 			
 			# Running iperf normally
 			echo "Running iperf3 on $1"	
-      			sudo /usr/local/bin/iperf3 -s -p "$1" -i 1 -V --logfile "$outFileName" 2> /dev/null
+      			sudo iperf3 -s -p "$1" -i 1 -V --logfile "$outFileName" 2> /dev/null
       			BACK_PID=$!
       			wait BACK_PID
 		elif [ "$input" = n ] || [ "$input" = N ]; then
@@ -125,7 +143,7 @@ if [ "$1" ]; then
 	elif [ "$running" = no ]; then
 		# Running iperf normally on specified port number
 		echo "Running iperf3 on $1"	
-    		sudo /usr/local/bin/iperf3 -s -p "$1" -i 1 -V --logfile "$outFileName" 2> /dev/null
+    		sudo iperf3 -s -p "$1" -i 1 -V --logfile "$outFileName" 2> /dev/null
     		BACK_PID=$!
     		wait BACK_PID
 	fi
@@ -135,7 +153,7 @@ else
 	isPortOpen 5201
 	if [ "$running" = no ]; then
 		echo "Running iperf3 on default port 5201"
-    		sudo /usr/local/bin/iperf3 -s -i 1 -V --logfile "$outFileName" 2> /dev/null
+    		sudo iperf3 -s -i 1 -V --logfile "$outFileName" 2> /dev/null
     		BACK_PID=$!
     		wait BACK_PID
 	elif [ "$running" = yes ]; then
@@ -157,7 +175,7 @@ else
 			
 			# Running iperf normally
 			echo "Running iperf3 on default port number 5201"	
-      			sudo /usr/local/bin/iperf3 -s -p 5201 -i 1 -V --logfile "$outFileName" 2> /dev/null
+      			sudo iperf3 -s -p 5201 -i 1 -V --logfile "$outFileName" 2> /dev/null
       			BACK_PID=$!
       			wait BACK_PID
 		elif [ "$input" = n ] || [ "$input" = N ]; then

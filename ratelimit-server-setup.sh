@@ -68,3 +68,4 @@ screen -S ndt -d -m ./ndt-server.sh
 
 # run iperf server
 screen -S iperf -d -m ./iperf-short-server.sh
+# screen -S iperf -d -m iperf3 -s -p 5201 -V

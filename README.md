@@ -20,7 +20,7 @@
 1. ### iperf3.9 commands
     ```bash
     ./run-iperf-server.sh [ port number ] # 5201 by default
-    screen -S iperf -d -m ./iperf-long-server.sh # to run long iperf
+    ./iperf-long-server.sh # to run long iperf
     ```
 
 2. ### faketcp commands (type ctrl+c to terminate)
@@ -55,4 +55,8 @@ Make sure no processes are running after you complete a test
 * To attach to a detached screen
     ```bash
     screen -r [screen-name]
+    ```
+* To kill a screen session
+    ```bash
+    screen -XS [sessionid] quit
     ```
