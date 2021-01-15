@@ -8,19 +8,25 @@
 
 4. Setup the server
     ```bash
-    sudo yum install -y git && git clone https://github.com/m-lab/ndt-server.git && git clone https://github.com/ahmadhassan997/rawtcp-udp.git && git clone https://github.com/5G-Measurement/ratelimit-server-scripts.git && cd ratelimit-server-scripts && bash ratelimit-server-setup.sh
+    sudo yum install -y git && git clone https://github.com/m-lab/ndt-server.git && git clone https://github.com/ahmadhassan997/rawtcp-udp.git && git clone -b main https://github.com/5G-Measurement/ratelimit-server-scripts.git && cd ratelimit-server-scripts && bash ratelimit-server-setup.sh
     ```
 
 5. Do a complete set of tests using run commands
 
-6. Go to Azure portal again: delete the virtual machine
+6. Push logs to data branch
+    ```bash
+    git checkout -b data && git add iperf3logs/ && git commit -m "server logs" && git push origin data
+    ```
+
+7. Go to Azure portal again: delete the virtual machine
 
 ## Run Commands
 
 1. ### iperf3.9 commands
+    iperf-short-server is started during setup
     ```bash
-    ./run-iperf-server.sh [ port number ] # 5201 by default
-    ./iperf-long-server.sh # to run long iperf
+    ./iperf-short-server.sh [ port number ] # 5201 by default
+    ./iperf-long-server.sh [ port number ] # to run long iperf
     ```
 
 2. ### faketcp commands (type ctrl+c to terminate)
@@ -30,7 +36,7 @@
     ```
 
 3. ### ndt commands (client visits: http://[IP]/ndt7.html)
-    
+    it's already started when setup is run
     ```bash
     ./run-ndt-server.sh # to run server
     ```
