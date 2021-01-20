@@ -6,6 +6,8 @@
 sudo timedatectl set-timezone America/Chicago
 
 # install dependencies for experiments
+sudo yum install -y yum
+sudo yum install -y lsof
 sudo yum install -y epel-release
 sudo yum install -y gcc
 sudo yum install -y screen
